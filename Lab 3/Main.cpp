@@ -20,46 +20,53 @@
 
 using namespace std;
 
-double numOne = 8;
-double numTwo = 5;
-double numThree = 3;
-double numFour = 25;
-double mean();
-double standardDeviation();
+float numOne;
+float numTwo;
+float numThree;
+float numFour;
+float mean();
+float standardDeviation();
 
 
-int main()
+int main() // The main function is use to call the other functions, input and output the numbers
 {
+	cout << "What is your First number: ";
+	cin >> numOne;
+	cout << "What is your Second number: ";
+	cin >> numTwo;
+	cout << "What is your Thrid number: ";
+	cin >> numThree;
+	cout << "What is your Forth number: ";
+	cin >> numFour;
+
 	mean();
 	standardDeviation();
 }
 
-double mean()
-{
-	double mean; 
-	mean = (numOne + numTwo + numThree + numFour) / 4;
-	cout << "The mean of your numbers is " << mean;
+float mean() // This function is used to calculate and output the mean of the numbers inputed
+{ 
+	float mean = (numOne + numTwo + numThree + numFour) / 4;
+	cout << "The mean of your numbers is " << mean << endl;
 	return 0;
 }
 
-double standardDeviation()
+float standardDeviation() // This function is to find and output Standard Deviation of the numbers 
 {
-	double mean = (numOne + numTwo + numThree + numFour) / 4;
-	double meanOne = (numOne - mean);
-	double meanTwo = (numTwo - mean);
-	double meanThree = (numThree - mean);
-	double meanFour = (numFour - mean);
-	double sum = (meanOne * meanOne) + (meanTwo * meanTwo) + (meanThree * meanThree) + (meanFour * meanFour);
-	double divided = sum / 4;
-	double standardDeviation = sqrt(divided);
-	cout << standardDeviation;
+	float mean = (numOne + numTwo + numThree + numFour) / 4;
+	float meanOne = (numOne - mean);
+	float meanTwo = (numTwo - mean);
+	float meanThree = (numThree - mean);
+	float meanFour = (numFour - mean);
+	float sum = (meanOne * meanOne) + (meanTwo * meanTwo) + (meanThree * meanThree) + (meanFour * meanFour);
+	float divided = sum / 4;
+	float standardDeviation = sqrt(divided);
+	cout << "The Standard Deviation for your numbers is " << standardDeviation << endl;
 	return 0;
 }
 
 
 // STILL NEED
 // inputing
-// floating point stuff
 // more comments
 // better prompts
 // outputting
