@@ -17,19 +17,40 @@
 
 #include <iostream> // Allows the ability to input and output 
 #include <cmath>  // The math functuion for square root
+#include <fstream> // Allows for File Read and Write
 
 using namespace std;
 
-float numOne;
-float numTwo;
-float numThree;
-float numFour;
-float mean();
-float standardDeviation();
-
+float mean(int a, int b, int c, int d);
+float standardDeviation(int a, int b, int c, int d);
 
 int main() // The main function is use to call the other functions, input and output the numbers
 {
+	//Input Variables
+	int numOne;
+	int numTwo;
+	int numThree;
+	int numFour;
+	ifstream inFile;
+	ofstream outFile;
+
+	//Local Variables
+	float standDev;
+	float me;
+
+	//File Input
+	inFile.open("inMeanStd.dat");
+	outFile.open("outMeanStd.dat");
+
+	inFile >> numOne >> numTwo >> numThree >> numFour;
+	
+	me = mean(numOne, numTwo, numThree, numFour);
+	standDev = standardDeviation(numOne, numTwo, numThree, numFour);
+	
+	outFile << "The Mean of your file inputed numbers is " << me << endl << "The Standard Deviation of your file inputted numbers is " << standDev << endl;
+	cout << "The Mean of your file inputed numbers is " << me << endl << "The Standard Deviation of your file inputted numbers is " << standDev << endl;
+
+	//User Input
 	cout << "What is your First number: ";
 	cin >> numOne;
 	cout << "What is your Second number: ";
@@ -39,34 +60,31 @@ int main() // The main function is use to call the other functions, input and ou
 	cout << "What is your Forth number: ";
 	cin >> numFour;
 
-	mean();
-	standardDeviation();
+	me = mean(numOne, numTwo, numThree, numFour);
+	standDev = standardDeviation(numOne, numTwo, numThree, numFour);
+
+	outFile << "The Mean of your user inputed numbers is " << me << endl << "The Standard Deviation of your user inputed numbers is " << standDev << endl;
+	cout << "The Mean of your user inputed numbers is " << me << endl << "The Standard Deviation of your user inputed numbers is " << standDev << endl;
+
+	inFile.close();
+	outFile.close();
 }
 
-float mean() // This function is used to calculate and output the mean of the numbers inputed
+float mean(int a, int b, int c, int d) // This function is used to calculate and output the mean of the numbers inputed
 { 
-	float mean = (numOne + numTwo + numThree + numFour) / 4;
-	cout << "The mean of your numbers is " << mean << endl;
-	return 0;
+	float mean = (float) (a + b + c + d) / 4;
+	return mean;
 }
 
-float standardDeviation() // This function is to find and output Standard Deviation of the numbers 
+float standardDeviation(int a, int b, int c, int d) // This function is to find and output Standard Deviation of the numbers 
 {
-	float mean = (numOne + numTwo + numThree + numFour) / 4;
-	float meanOne = (numOne - mean);
-	float meanTwo = (numTwo - mean);
-	float meanThree = (numThree - mean);
-	float meanFour = (numFour - mean);
+	float mean = (float) (a + b + c + d) / 4;
+	float meanOne = (a - mean);
+	float meanTwo = (b - mean);
+	float meanThree = (c - mean);
+	float meanFour = (d - mean);
 	float sum = (meanOne * meanOne) + (meanTwo * meanTwo) + (meanThree * meanThree) + (meanFour * meanFour);
 	float divided = sum / 4;
 	float standardDeviation = sqrt(divided);
-	cout << "The Standard Deviation for your numbers is " << standardDeviation << endl;
-	return 0;
+	return standardDeviation;
 }
-
-
-// STILL NEED
-// inputing
-// more comments
-// better prompts
-// outputting
